@@ -1,0 +1,13 @@
+<div id="sidebar">
+
+	<!-- Sidebar -->
+	{% for post in site.posts offset: 0 limit: 2 %}
+		<section>
+			<h3>{{ post.title }}</h3>
+			<footer>
+				<a href="{{ site.prefix }}{{ post.url }}" class="button">Take me!!</a>
+			</footer>
+		</section>
+	{% endfor %}
+	
+</div>
