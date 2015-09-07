@@ -4,9 +4,8 @@
 	{% for post in site.posts offset: 0 limit: 2 %}
 		<section>
 			<h3>{{ post.title }}</h3>
-			{{ post.excerpt }}
 			<footer>
-				<a href="{{ site.prefix }}{{ post.url }}" class="button">Continue Reading</a>
+				<a href="{{ site.prefix }}{{ post.url }}" class="button">Take me!!</a>
 			</footer>
 		</section>
 	{% endfor %}
