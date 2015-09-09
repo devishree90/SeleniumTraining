@@ -1,8 +1,10 @@
 package advance;
 
-import java.util.NoSuchElementException;
 import java.util.concurrent.TimeUnit;
 
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -10,11 +12,21 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import com.gargoylesoftware.htmlunit.ElementNotFoundException;
-
 public class Wait {
-  public static void main(String args[]) throws InterruptedException{
-    WebDriver driver = new FirefoxDriver();
+  public WebDriver driver;
+
+  @Before
+  public void setUp(){
+    driver=new FirefoxDriver();
+  }
+
+  @After
+  public void teardown(){
+    driver.close();
+  }
+  
+  @Test
+  public void testWait() throws InterruptedException{
 //    Implicit Wait
     driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 //    PageLoad timings
@@ -32,6 +44,5 @@ public class Wait {
 //    ExplicitWait
     (new WebDriverWait(driver, 5)).until(ExpectedConditions.urlContains("/blog"));
     driver.navigate().back();
-    driver.close();
   }
 }

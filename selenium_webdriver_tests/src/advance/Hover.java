@@ -1,5 +1,8 @@
 package advance;
 
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -8,8 +11,20 @@ import org.openqa.selenium.interactions.Actions;
 
 
 public class Hover {
-  public static void main(String args[]) throws InterruptedException{
-    WebDriver driver=new FirefoxDriver();
+  public WebDriver driver;
+
+  @Before
+  public void setUp(){
+    driver=new FirefoxDriver();
+  }
+
+  @After
+  public void teardown(){
+    driver.close();
+  }
+
+  @Test
+  public void testHover() throws InterruptedException{
     driver.get("http://localhost:1234");
     Actions builder=new Actions(driver);
     Action action= builder.moveToElement(driver.findElement(By.cssSelector("#nav .opener a")))
@@ -26,6 +41,5 @@ public class Hover {
 //            .build();
 //    newAction.perform();
 //    driver.findElement(By.cssSelector("#nav .opener ul li.opener ul li")).click();
-    driver.close();
   }
 }
