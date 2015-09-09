@@ -2,13 +2,28 @@ package advance;
 
 import java.util.Set;
 
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class Cookie {
-  public static void main(String args[]){
-    WebDriver driver=new FirefoxDriver();
+  public WebDriver driver;
+
+  @Before
+  public void setUp(){
+    driver=new FirefoxDriver();
+  }
+
+  @After
+  public void teardown(){
+    driver.close();
+  }
+
+  @Test
+  public void testCookie(){
     driver.get("http://localhost:1234/2014/09/06/Cookie.html");
     driver.findElement(By.className("button")).click();
     readCookies(driver);
@@ -18,10 +33,9 @@ public class Cookie {
     readCookies(driver);
     driver.manage().deleteAllCookies();
     readCookies(driver);
-    driver.quit();
   }
 
-  private static void readCookies(WebDriver driver) {
+  public void readCookies(WebDriver driver) {
     Set<org.openqa.selenium.Cookie> allCookies = driver.manage().getCookies();
     for (org.openqa.selenium.Cookie loadedCookie : allCookies) {
         System.out.println(String.format("%s -> %s", loadedCookie.getName(), loadedCookie.getValue()));
