@@ -3,7 +3,11 @@ package stage0;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-
+/*
+ * @Aim:Should achieve the fluent control over radiobutton interaction
+ *      :All API
+ *      :Read selected attribute
+ */
 public class RadioButton {
   public static void main(String args[]){
     WebDriver driver=new FirefoxDriver();
