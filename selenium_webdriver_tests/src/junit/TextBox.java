@@ -9,6 +9,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 public class TextBox {
   public WebDriver driver;
@@ -24,7 +25,7 @@ public class TextBox {
   }
 
   @Test
-  public void testTextBox() throws InterruptedException{
+  public void testTextBox(){
     String FIRST_NAME="Devi";
     String LAST_NAME="Sridharan";
     driver=new FirefoxDriver();
@@ -36,6 +37,7 @@ public class TextBox {
     driver.findElement(By.className("button")).click();
     Boolean myDynamicElement = (new WebDriverWait(driver, 10))
         .until(ExpectedConditions.textToBePresentInElementLocated(By.id("fullName"),FIRST_NAME+" "+LAST_NAME));
-    System.out.println(driver.findElement(By.id("fullName")).getText());
+    String result=driver.findElement(By.id("fullName")).getText();
+    Assert.assertTrue(result.equals(FIRST_NAME+" "+LAST_NAME), "Mismatch in result: "+result);
   }
 }
