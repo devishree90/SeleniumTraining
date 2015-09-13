@@ -1,0 +1,6 @@
+{"locators":
+  [
+  {"id":"first","type":"id","locator":"firstname"},
+  {"id":"last","type":"id","locator":"lastname"}
+  ]
+}
